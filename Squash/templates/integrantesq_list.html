@@ -1,0 +1,117 @@
+
+
+
+
+<style type="text/css">
+
+	table,th,td{
+
+		border:1px solid black;
+		border-collapse: collapse;
+	}
+	body{
+		background-color: white;
+		font-family: Arial;
+	}
+	th,td{
+		padding: 15px;
+	}
+
+	td{
+		text-align: center;
+	}
+	th{
+		background-color:rgb(179, 185, 148);
+	}
+
+	
+
+	/* Header lo que esat detras del logo*/
+	#header { background:rgb(255, 255, 255); }
+			#header-inner { margin:0 auto; padding:0; width:970px;}
+	
+	/* Feature letras debajo del logo*/	
+	.feature { background:rgb(74, 103, 197);padding:10px;}
+			.feature-inner { margin:10px 10px;width:970px; }
+			.feature-inner h1 {color:rgb(255, 255, 255);font-size:25px;}
+	
+	/* Boton personalizado*/
+	.boton_personalizado{
+	  text-decoration: none;
+	  padding: 10px;
+	  font-weight: 600;
+	  font-size: 13px;
+	  color: #ffffff;
+	  background-color: #1883ba;
+	  border-radius: 6px;
+	  border: 2px solid #0016b0;
+	}
+</style>
+
+
+<body>
+	<div class="feature">
+		<div class="feature-inner">
+		<h1>Integrantes Squash</h1><p>
+		</div>
+	</div>
+
+<div class="panel panel-primary">
+	
+	<div class="panel-body">
+		<table style= "width: 100%;">	
+				<tr>
+					<th>Id Integrante</th>
+					<th>Cedula</th>
+					<th>Nombre</th>
+					<th>programa</th>
+					<th>Condicion</th>
+					<th>telefono</th>
+					<th>email</th>
+					<th>Nombre equipo</th>
+					<th>Acciones</th>
+				</tr>
+			
+			<tbody>
+				{% for item in obj %} <!-- Recorrer todos los datos que tienen la tabla-->
+				<tr>
+					<td>
+						{{item.id}} <!-- Mostrar el id de la tupla-->
+					</td>
+					<td>
+						{{item.cedulasq}} <!-- Mostrar el id de la tupla-->
+					</td>
+					<td>
+						{{item.nombresq}} <!-- Descripción de la tabla-->
+					</td>
+					<td>
+						{{item.programasq}} <!-- Descripción de la tabla-->
+					</td>
+					<td>
+						{{item.condicionsq}} <!-- Descripción de la tabla-->
+					</td>
+					<td>
+						{{item.telefonosq}} <!-- Descripción de la tabla-->
+					</td>
+					<td>
+						{{item.emailsq}} <!-- Descripción de la tabla-->	
+					</td>
+					<td>
+						{{item.dificultadsq}} <!-- Descripción de la tabla-->
+					</td>
+					<td>
+						<a class="boton_personalizado" href="{% url 'Squash:editar_integrantesq' item.id %}" class="btn btn-primary btn-circle"><span class="fa fa-edit"></span>Editar</a>
+					   <a class="boton_personalizado" href="{% url 'Squash:borrar_integrantesq' item.id %}" class="btn btn-danger btn-circle"><span class="fa fa-trash"></span>Borrar</a>
+					</td>                                           
+				</tr>
+				{% endfor %}
+			</tbody>
+			
+		</table>
+		
+	</div>
+	<br>
+	<a class="boton_personalizado" href="{% url 'Squash:insertar_integrantesq' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span>Ingresar Integrante</a>
+	<a class="boton_personalizado" href="{% url 'Torneos:informacion' %}" class="btn btn-info"><span class="fa fa-plus-circle"></span>Regresar</a>
+</div>
+</body>
